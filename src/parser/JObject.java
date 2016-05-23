@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2016/5/20.
  */
-public class JObject extends Json {
+public class JObject implements Json {
     private Map<String, Value> map = new HashMap<>();
 
     public JObject(Map<String, Value> map) {
