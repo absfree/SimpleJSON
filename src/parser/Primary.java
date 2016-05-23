@@ -3,7 +3,7 @@ package parser;
 /**
  * Created by Administrator on 2016/5/20.
  */
-public class Primary extends Json implements Value {
+public class Primary implements Json, Value {
     private String value;
 
     public Primary(String value) {
