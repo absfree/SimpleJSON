@@ -1,6 +1,5 @@
 package parser;
 
-
 import com.google.gson.JsonParseException;
 import tokenizer.Token;
 import tokenizer.TokenType;
@@ -116,8 +115,6 @@ public class Parser {
         return list;
     }
 
-
-
     private Json json() {
         TokenType type = tokenizer.peek(0).getType();
         if (type == TokenType.START_ARRAY) {
@@ -163,7 +160,6 @@ public class Parser {
         Parser parser = new Parser(tokenizer);
         return parser.array();
     }
-
 
     public static <T> T fromJson(String jsonString, Class<T> classOfT) throws Exception {
         Tokenizer tokenizer = new Tokenizer(new BufferedReader(new StringReader(jsonString)));
@@ -250,12 +246,10 @@ public class Parser {
                     fields[j].setAccessible(true);
                     fields[j].set(element, object.getInt(fieldNames[j]));
                 }
-
             }
             list.add(element);
         }
         return list;
     }
-
 
 }
