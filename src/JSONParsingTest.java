@@ -25,14 +25,12 @@ public class JSONParsingTest {
         try {
             String jsonString = new String(HttpUtil.get(urlString));
             startTime = System.currentTimeMillis();
-            JSONObject latestNewsJSON = new JSONObject(jsonString);
 
+            JSONObject latestNewsJSON = new JSONObject(jsonString);
             String date = latestNewsJSON.getString("date");
             JSONArray top_storiesJSON = latestNewsJSON.getJSONArray("top_stories");
             LatestNews latest = new LatestNews();
-
             List<LatestNews.TopStory> stories = new ArrayList<>();
-
             for (int i = 0; i < top_storiesJSON.length(); i++) {
                 LatestNews.TopStory story = new LatestNews.TopStory();
                 story.setId(((JSONObject) top_storiesJSON.get(i)).getInt("id"));
@@ -41,6 +39,7 @@ public class JSONParsingTest {
                 story.setTitle(((JSONObject) top_storiesJSON.get(i)).getString("title"));
                 stories.add(story);
             }
+
             long endTime = System.currentTimeMillis();
             double time = (double) (endTime - startTime) / 1000.0;
             System.out.println("took " + time + "seconds.");
