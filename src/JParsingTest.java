@@ -20,13 +20,12 @@ public class JParsingTest {
         try {
             String jsonString = new String(HttpUtil.get(urlString));
             startTime = System.currentTimeMillis();
+            
             JObject latestNewsJSON = parseJSONObject(jsonString);
-
             String date = latestNewsJSON.getString("date");
             JArray top_storiesJSON = latestNewsJSON.getJArray("top_stories");
             LatestNews latest = new LatestNews();
             List<LatestNews.TopStory> stories = new ArrayList<>();
-
             for (int i = 0; i < top_storiesJSON.length(); i++) {
                 LatestNews.TopStory story = new LatestNews.TopStory();
                 story.setId(((JObject) top_storiesJSON.get(i)).getInt("id"));
@@ -35,6 +34,7 @@ public class JParsingTest {
                 story.setTitle(((JObject) top_storiesJSON.get(i)).getString("title"));
                 stories.add(story);
             }
+            
             long endTime = System.currentTimeMillis();
             double time = (double) (endTime - startTime) / 1000.0;
             System.out.println("took " + time + "seconds.");
