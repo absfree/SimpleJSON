@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/5/20.
  */
-public class JArray extends Json implements  Value {
+public class JArray implements  Json, Value {
     private List<Json> list = new ArrayList<>();
 
     public JArray(List<Json> list) {
